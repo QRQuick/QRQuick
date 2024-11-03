@@ -54,7 +54,7 @@ We welcome contributions! Feel free to fork this project, work on new features, 
 
 <h3 align="left">Social media </h3>
 <div align="left">
-  <a href="qrquicks@gmail.com" target="_blank">
+  <a href="mailto:qrquicks@gmail.com" target="_blank">
     <img src="https://img.shields.io/static/v1?message=Email&logo=email&label=&color=FFFFFF&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="email logo"  />
   </a>
   <a href="https://www.linkedin.com/in/qrquick-cooperation/" target="_blank">
