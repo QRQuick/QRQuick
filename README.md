@@ -43,7 +43,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Usage
 
-Simply enter the information you want to encode, and QRQuick will generate a QR code that you can download and use immediately.
+Enter the information you want to encode, such as a URL or contact details, and QRQuick will generate a high-quality QR code you can download and use immediately.
 
 ## Roadmap
 - Tracking & Analytics: QRQuick will soon offer tracking, allowing you to monitor how many times your QR codes are scanned, and where they are scanned from.
