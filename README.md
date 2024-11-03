@@ -5,10 +5,11 @@
 QRQuick is a free and easy-to-use QR code generator compatible with any device. Generate QR codes instantly for your URLs, contact information, Wi-Fi access, and more without needing special software or accounts. Designed with a simple, intuitive interface, QRQuick is perfect for anyone looking to quickly create and use QR codes.
 
 ## Features
-Free QR Code Generation: No hidden fees or subscriptions.
-Device Compatibility: Works seamlessly on mobile, tablet, and desktop.
-Customizable: Create QR codes for URLs, contacts, events, Wi-Fi, and more.
-Instant Access: No sign-up needed. Just generate and go!
+
+- Free QR Code Generation: No hidden fees or subscriptions—generate unlimited QR codes.
+- Device Compatibility: Works smoothly on mobile, tablet, and desktop browsers.
+- Multiple QR Code Types: Create codes for links, contacts, Wi-Fi, text, and more.
+- Future Tracking Functionality: QRQuick will soon introduce tracking to monitor QR code scans (Coming Soon).
 
 ## Getting Started
 
