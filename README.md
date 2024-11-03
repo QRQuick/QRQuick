@@ -14,6 +14,7 @@ You can view our website here https://qrquicks.vercel.app/
 - Future Tracking Functionality: QRQuick will soon introduce tracking to monitor QR code scans (Coming Soon).
 
 ## Getting Started
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 1. Clone this repository:
    git clone https://github.com/your-username/QRQuick.git
