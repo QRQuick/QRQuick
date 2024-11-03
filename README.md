@@ -51,3 +51,13 @@ Enter the information you want to encode, such as a URL or contact details, and 
 ## Contributing
 
 We welcome contributions! Feel free to fork this project, work on new features, or submit pull requests for improvements.
+
+<h3 align="left">Social media </h3>
+<div align="left">
+  <a href="qrquicks@gmail.com" target="_blank">
+    <img src="https://img.shields.io/static/v1?message=Email&logo=email&label=&color=FFFFFF&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="email logo"  />
+  </a>
+  <a href="https://www.linkedin.com/in/qrquick-cooperation/" target="_blank">
+    <img src="https://img.shields.io/static/v1?message=LinkedIn&logo=linkedin&label=&color=0077B5&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="linkedin logo"  />
+  </a>
+</div>
