@@ -50,4 +50,4 @@ Enter the information you want to encode, such as a URL or contact details, and 
 
 ## Contributing
 
-Feel free to fork this project and submit pull requests to enhance features or fix issues.
+We welcome contributions! Feel free to fork this project, work on new features, or submit pull requests for improvements.
