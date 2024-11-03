@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-<img src="https://github.com/xFalzz/QRQuick/blob/main/public/OpenGraphIMG.jpg" alt="QRQuick" width="1000"/>
+<img src="https://github.com/xFalzz/QRQuick/blob/main/public/ssqr.jpg" alt="QRQuick" width="1000"/>
 
 ## Getting Started
 
