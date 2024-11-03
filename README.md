@@ -16,8 +16,8 @@ QRQuick is a free and easy-to-use QR code generator compatible with any device. 
 1. Clone this repository:
    git clone https://github.com/your-username/QRQuick.git
 
-2. Open the application and follow the instructions to generate your QR code.
-3. Run the development server:
+3. Open the application and follow the instructions to generate your QR code.
+4. Run the development server:
 
 ```bash
 npm run dev
