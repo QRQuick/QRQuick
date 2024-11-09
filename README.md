@@ -51,7 +51,7 @@ Enter the information you want to encode, such as a URL or contact details, and 
 
 ## Contributing
 
-We welcome contributions! Feel free to fork this project, work on new features, or submit pull requests for improvements.
+We welcome contributions! Feel free to fork this project, work on new features, or submit pull requests for improvements
 
 ## Social media
 <div align="left">
