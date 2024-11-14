@@ -9,7 +9,7 @@ QRQuick is a free and easy-to-use QR code generator compatible with any device. 
 - Free QR Code Generation: No hidden fees or subscriptions—generate unlimited QR codes.
 - Device Compatibility: Works smoothly on mobile, tablet, and desktop browsers.
 - Multiple QR Code Types: Create codes for links, contacts, Wi-Fi, text, and more.
-- Future Tracking Functionality: QRQuick will soon introduce tracking to monitor QR code scans (Coming Soon)
+- Future Tracking Functionality: QRQuick will soon introduce tracking to monitor QR code scans (Coming Soon).
 
 ## Getting Started
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
