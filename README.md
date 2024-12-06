@@ -64,4 +64,4 @@ We welcome contributions! Feel free to fork this project, work on new features, 
 </div>
 
 ## LICENSE
-Copyright (c) 2024 Nopal.
+Copyright (c) 2024 QRQuick.
