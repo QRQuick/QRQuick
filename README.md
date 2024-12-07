@@ -65,3 +65,4 @@ We welcome contributions! Feel free to fork this project, work on new features, 
 
 ## LICENSE
 Copyright (c) 2024 QRQuick.
+ 
