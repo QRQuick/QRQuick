@@ -44,3 +44,4 @@ Your contributions and feedback help make QRQuick a secure and reliable tool for
 ---
 
 If you have any questions regarding our security practices, please feel free to reach out.
+
