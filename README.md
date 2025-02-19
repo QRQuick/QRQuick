@@ -1,4 +1,4 @@
-<img src="https://github.com/xFalzz/QRQuick/blob/main/public/ssqr.jpg" alt="QRQuick" width="1000"/>
+<img src="https://github.com/xFalzz/QRQuick/blob/main/public/ssqr.jpg" alt="QRQuick" width="1000"/> 
 
 ## [QRQuick](https://qrquicks.vercel.app/)
 
