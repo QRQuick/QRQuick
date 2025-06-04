@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef } from "react";
-import { Link, Wifi, FileText, Image, FileJson, Mail, Phone, User, MessageSquare, MapPin, AppWindow } from "lucide-react";
+import { Link, Wifi, FileText, Image, FileJson, Mail, Phone, User, MessageSquare, MapPin, AppWindow, BarChart3 } from "lucide-react";
 
 export default function UrlShortenerCards({ className }) {
     const [menu, setMenu] = useState("qr");
@@ -11,6 +11,11 @@ export default function UrlShortenerCards({ className }) {
     const [imageFile, setImageFile] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
     const [qrWithWatermark, setQrWithWatermark] = useState(null);
+    const [trackingDragActive, setTrackingDragActive] = useState(false);
+    const [trackingImage, setTrackingImage] = useState(null);
+    const [trackingData, setTrackingData] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     const [mapsForm, setMapsForm] = useState({
         location: "",
@@ -180,14 +185,109 @@ export default function UrlShortenerCards({ className }) {
         handleImageFile(file);
     };
 
-    const isGenerateDisabled = () => {
-        switch(qrType) {
-            case 'maps':
-                return !mapsForm.location;
-            case 'apps':
-                return !appsForm.platform || !appsForm.url;
+    const mockTrackingData = {
+        totalScans: 1,
+        uniqueUsers: 1,
+        scansByDevice: {
+            mobile: 1,
+            desktop: 0,
+            tablet: 0
+        },
+        scansByLocation: {
+            "United States": 0,
+            "Indonesia": 1,
+            "Germany": 0,
+            "Others": 0
+        },
+        recentScans: [
+            { timestamp: "2024-03-03T14:23:00Z", device: "mobile", location: "Jakarta, Indonesia" },
+            { timestamp: "2024-03-03T13:45:00Z", device: "desktop", location: "Yogyakarta, Indonesia" },
+            { timestamp: "2024-03-03T12:30:00Z", device: "mobile", location: "Berlin, Germany" },
+        ]
+    };
 
+    const handleTrackingDrag = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.type === "dragenter" || e.type === "dragover") {
+            setTrackingDragActive(true);
+        } else if (e.type === "dragleave") {
+            setTrackingDragActive(false);
         }
+    };
+
+    const handleTrackingDrop = async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setTrackingDragActive(false);
+        setError(null);
+
+        const file = e.dataTransfer.files[0];
+        await handleTrackingFile(file);
+    };
+
+    const handleTrackingUpload = async (e) => {
+        const file = e.target.files[0];
+        await handleTrackingFile(file);
+    };
+
+    const handleTrackingFile = async (file) => {
+        if (file && file.type.startsWith('image/')) {
+            if (file.size > 5 * 1024 * 1024) {
+                setError('File size should be less than 5MB');
+                return;
+            }
+
+            setIsLoading(true);
+            try {
+                // Create preview
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    setTrackingImage(reader.result);
+                };
+                reader.readAsDataURL(file);
+
+                // Simulate API call to get tracking data
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                setTrackingData(mockTrackingData);
+            } catch (err) {
+                setError('Failed to analyze QR code. Please try again.');
+            } finally {
+                setIsLoading(false);
+            }
+        } else {
+            setError('Please upload an image file');
+        }
+    };
+
+    const renderTrackingStats = () => {
+        if (!trackingData) return null;
+
+        return (
+            <div className="mt-6 space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="bg-neutral-100 p-4 rounded-lg">
+                        <h3 className="text-lg font-semibold">Total Scans</h3>
+                        <p className="text-2xl font-bold">{trackingData.totalScans}</p>
+                    </div>
+                    <div className="bg-neutral-100 p-4 rounded-lg">
+                        <h3 className="text-lg font-semibold">Unique Users</h3>
+                        <p className="text-2xl font-bold">{trackingData.uniqueUsers}</p>
+                    </div>
+                    <div className="bg-neutral-100 p-4 rounded-lg">
+                        <h3 className="text-lg font-semibold">Device Distribution</h3>
+                        <div className="space-y-1">
+                            {Object.entries(trackingData.scansByDevice).map(([device, count]) => (
+                                <div key={device} className="flex justify-between">
+                                    <span className="capitalize">{device}</span>
+                                    <span>{count}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
     };
 
     const handleImageFile = (file) => {
@@ -797,6 +897,75 @@ export default function UrlShortenerCards({ className }) {
             >
                 Generate QR Code
             </button>
+            </div>
+
+            <div className={`${className} ${menu === "clicks" ? "" : "hidden"} shadow-[0_0_10px_0_rgba(0,0,0,0.3)] mx-auto mt-6 rounded-lg px-6 py-4 pb-6`}>
+                <h2 className="font-semibold text-lg mb-4">Track Your QR Code</h2>
+                
+                {!trackingImage ? (
+                    <div 
+                        className={`border-2 border-dashed rounded-lg p-6 text-center 
+                            ${trackingDragActive ? 'border-blue-500 bg-blue-50' : 'border-gray-300'}`}
+                        onDragEnter={handleTrackingDrag}
+                        onDragLeave={handleTrackingDrag}
+                        onDragOver={handleTrackingDrag}
+                        onDrop={handleTrackingDrop}
+                    >
+                        <div className="space-y-2">
+                            <BarChart3 className="mx-auto size-8 text-gray-400" />
+                            <p className="text-gray-600">Drag and drop your QR code image here, or</p>
+                            <label className="inline-block bg-neutral-900 text-white px-4 py-2 rounded-lg cursor-pointer hover:bg-neutral-800">
+                                Choose File
+                                <input
+                                    type="file"
+                                    className="hidden"
+                                    accept="image/*"
+                                    onChange={handleTrackingUpload}
+                                />
+                            </label>
+                        </div>
+                        <p className="mt-2 text-sm text-gray-500">Supports: JPG, PNG (max 5MB)</p>
+                    </div>
+                ) : (
+                    <div className="space-y-4">
+                        <div className="flex justify-center">
+                            <div className="relative">
+                                <img 
+                                    src={trackingImage} 
+                                    alt="QR Code" 
+                                    className="w-32 h-32 object-contain"
+                                />
+                                <button
+                                    onClick={() => {
+                                        setTrackingImage(null);
+                                        setTrackingData(null);
+                                        setError(null);
+                                    }}
+                                    className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        {isLoading && (
+                            <div className="text-center py-4">
+                                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-neutral-900 mx-auto"></div>
+                                <p className="mt-2">Analyzing QR code...</p>
+                            </div>
+                        )}
+
+                        {error && (
+                            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                                {error}
+                            </div>
+                        )}
+
+                        {renderTrackingStats()}
+                    </div>
+                )}
             </div>
         </>
     );
